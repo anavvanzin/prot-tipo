@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldCheck, HelpCircle, FileText } from "lucide-react";
+import { ShieldCheck, Scale, FileText } from "lucide-react";
 
 interface HeaderProps {
   apiKeyConfigured: boolean;
@@ -42,7 +42,7 @@ export default function Header({ apiKeyConfigured }: HeaderProps) {
             href="#doc-framework" 
             className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800/40 hover:bg-slate-800 text-slate-400 hover:text-slate-200 rounded-lg border border-slate-800 transition duration-150"
           >
-            <HelpCircle size={14} />
+            <Scale size={14} className="text-amber-500" />
             <span>Fundamentos Jurídicos</span>
           </a>
         </div>

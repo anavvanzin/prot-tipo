@@ -1,5 +1,6 @@
 import React from "react";
 import { ShieldCheck, Scale, FileText } from "lucide-react";
+import logo from "../assets/images/cca_logo_1779691762491.png";
 
 interface HeaderProps {
   apiKeyConfigured: boolean;
@@ -14,7 +15,7 @@ export default function Header({ apiKeyConfigured }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 py-4.5 sm:px-6 lg:px-8 flex flex-col items-center text-center md:flex-row md:items-center md:justify-between md:text-left gap-4">
         <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3.5">
           <img 
-            src="/src/assets/images/cca_simple_flat_logo_1779692326781.png" 
+            src={logo} 
             alt="Logo do Conselho de Contestação Algorítmica" 
             className="h-10 w-10 sm:h-11 sm:w-11 rounded-xl object-cover border border-slate-700/60 shadow-md transition-transform hover:scale-105 duration-200"
             referrerPolicy="no-referrer"

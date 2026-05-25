@@ -34,3 +34,14 @@
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: rgba(148, 163, 184, 0.35);
 }
+
+/* Light Theme via CSS Invert Hack */
+html.theme-diurno {
+  filter: invert(1) hue-rotate(180deg);
+  background: #0f172a; /* Slate 900 base to invert properly */
+}
+
+/* Reverse images so they look normal */
+html.theme-diurno img {
+  filter: invert(1) hue-rotate(180deg);
+}

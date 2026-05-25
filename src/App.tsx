@@ -14,7 +14,9 @@ import {
   Scale, 
   Info, 
   Cpu, 
-  Layers
+  Layers,
+  Moon,
+  Sun
 } from "lucide-react";
 
 export default function App() {
@@ -37,6 +39,16 @@ export default function App() {
   // Custom generated document view: "recurso" | "lai"
   const [activeDocTab, setActiveDocTab] = useState<"recurso" | "lai">("recurso");
   const [copiedText, setCopiedText] = useState(false);
+
+  const [theme, setTheme] = useState<"noturno" | "diurno">("noturno");
+
+  useEffect(() => {
+    if (theme === "diurno") {
+      document.documentElement.classList.add("theme-diurno");
+    } else {
+      document.documentElement.classList.remove("theme-diurno");
+    }
+  }, [theme]);
 
   // Smooth scroll helper
   const scrollToAnchor = (id: string) => {
@@ -147,67 +159,75 @@ export default function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8 space-y-8 relative z-10 pb-24">
         
         {/* Sticky Mobile-Friendly Segmented Control Bar */}
-        <div className="sticky top-4 z-40 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-2 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.55)] flex flex-wrap gap-2 items-center justify-between">
-          <div className="flex items-center gap-2 pl-2">
-            <Scale className="text-amber-500 w-4 h-4 animate-pulse" />
-            <span className="font-mono text-[10px] font-bold tracking-widest text-slate-400 uppercase hidden sm:inline">
+        <div className="sticky top-4 z-40 bg-slate-900/95 backdrop-blur-xl border border-slate-800 p-2 sm:p-2.5 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-wrap gap-3 items-center justify-between transition-all">
+          <div className="flex items-center gap-2 pl-2 shrink-0">
+            <Scale className="text-amber-500 w-5 h-5 animate-pulse drop-shadow-md" />
+            <span className="font-mono text-[11px] font-bold tracking-[0.2em] text-slate-300 uppercase hidden lg:inline">
               RITO CCA-26
             </span>
           </div>
 
-          <div className="flex flex-wrap bg-slate-950/80 p-0.5 rounded-xl border border-slate-850/80">
+          <div className="flex overflow-x-auto scrollbar-thin bg-slate-950 p-1 rounded-xl border border-slate-800/80 shadow-inner flex-1 md:flex-none">
             <button
               onClick={() => setActiveMainTab("auditoria")}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeMainTab === "auditoria"
-                  ? "bg-amber-500 text-slate-950 shadow-[0_4px_15px_rgba(245,158,11,0.25)]"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
+                  ? "bg-amber-500 text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.3)] scale-[1.02]"
+                  : "text-slate-400 hover:text-amber-400 hover:bg-slate-900/80"
               }`}
             >
-              <Database size={13} />
+              <Database size={14} />
               <span>1. AUDITORIA</span>
             </button>
 
             <button
               onClick={() => setActiveMainTab("deliberacao")}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeMainTab === "deliberacao"
-                  ? "bg-amber-500 text-slate-950 shadow-[0_4px_15px_rgba(245,158,11,0.25)]"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
+                  ? "bg-amber-500 text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.3)] scale-[1.02]"
+                  : "text-slate-400 hover:text-amber-400 hover:bg-slate-900/80"
               }`}
             >
-              <Users size={13} />
+              <Users size={14} />
               <span>2. DELIBERAÇÃO</span>
             </button>
 
             <button
               onClick={() => setActiveMainTab("simulacao")}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeMainTab === "simulacao"
-                  ? "bg-amber-500 text-slate-950 shadow-[0_4px_15px_rgba(245,158,11,0.25)]"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
+                  ? "bg-amber-500 text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.3)] scale-[1.02]"
+                  : "text-slate-400 hover:text-amber-400 hover:bg-slate-900/80"
               }`}
             >
-              <Layers size={13} />
+              <Layers size={14} />
               <span>3. SIMULAÇÃO</span>
             </button>
 
             <button
               onClick={() => setActiveMainTab("fundamentos")}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeMainTab === "fundamentos"
-                  ? "bg-amber-500 text-slate-950 shadow-[0_4px_15px_rgba(245,158,11,0.2)]"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
+                  ? "bg-amber-500 text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.3)] scale-[1.02]"
+                  : "text-slate-400 hover:text-amber-400 hover:bg-slate-900/80"
               }`}
             >
-              <Info size={13} />
+              <Info size={14} />
               <span>4. DOUTRINA</span>
             </button>
           </div>
 
-          <div className="pr-2 hidden md:block">
-            <span className="p-1 px-2.5 rounded text-[9.5px] font-mono bg-slate-950/80 text-amber-400 border border-slate-800 font-bold select-none">
-              ⚖️ PROTOCOLO ATIVO
+          <div className="pr-1 flex items-center gap-2 shrink-0">
+            <button 
+              onClick={() => setTheme(theme === 'noturno' ? 'diurno' : 'noturno')}
+              className="p-2 rounded-lg bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-amber-400 hover:bg-slate-900 transition-colors"
+              title={theme === 'noturno' ? "Mudar para Modo Diurno" : "Mudar para Modo Noturno"}
+            >
+              {theme === 'noturno' ? <Sun size={15} /> : <Moon size={15} />}
+            </button>
+            <span className="hidden md:flex p-1.5 px-3 rounded text-[10px] sm:text-[11px] font-mono bg-slate-950/80 text-amber-400 border border-amber-500/30 font-bold select-none drop-shadow-sm items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              SISTEMA ATIVO
             </span>
           </div>
         </div>

@@ -100,7 +100,7 @@ export default function LatinGlossary() {
   return (
     <>
       {/* Floating Trigger Button */}
-      <div className="fixed bottom-16 left-4 z-50">
+      <div className="fixed bottom-6 left-64 z-50 md:left-auto md:right-6 md:bottom-24">
         <button
           onClick={() => setIsOpen(true)}
           className="flex items-center gap-2 px-4 py-3 rounded-full bg-slate-900 border border-amber-500/40 text-amber-400 hover:text-amber-300 hover:bg-slate-950 hover:border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-all duration-300 group font-mono text-[11px] font-bold"

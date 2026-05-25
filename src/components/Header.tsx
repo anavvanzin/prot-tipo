@@ -1,6 +1,6 @@
 import React from "react";
 import { ShieldCheck, Scale, FileText } from "lucide-react";
-import logo from "../assets/images/cca_logo_1779691762491.png";
+import logo from "../assets/images/cca_flat_logo_1779693923324.png";
 
 interface HeaderProps {
   apiKeyConfigured: boolean;

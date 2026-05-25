@@ -183,7 +183,7 @@ export default function CaseSelector({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
             <div className="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
               <Cpu size={14} className="text-amber-500 animate-pulse" />
-              <span>Análise processada em tempo real com Gemini 3.5 Flash</span>
+              <span>Análise processada e estruturada via Protocolo CCA</span>
             </div>
 
             <button

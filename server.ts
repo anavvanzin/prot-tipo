@@ -39,14 +39,16 @@ async function startServer() {
   });
 
   // API endpoint to verify configuration
-  app.get("/api/config-status", (req, res) => {
+  const handleKeyStatus = (req: any, res: any) => {
     const active = !!process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== "MY_GEMINI_API_KEY";
-    res.json({ apiKeyConfigured: active });
-  });
+    res.json({ configured: active, apiKeyConfigured: active });
+  };
+  app.get("/api/config-status", handleKeyStatus);
+  app.get("/api/key-status", handleKeyStatus);
 
   // API endpoint for dynamic analysis via Gemini
-  app.post("/api/analyze-decision", async (req, res) => {
-    const { decisionText } = req.body;
+  const handleAnalyzeDecision = async (req: any, res: any) => {
+    const decisionText = req.body.description || req.body.decisionText;
 
     if (!decisionText || decisionText.trim() === "") {
       return res.status(400).json({ error: "O texto da decisão estatal é necessário para a análise." });
@@ -185,7 +187,7 @@ Siga estritamente o esquema JSON requerido para a resposta do Conselho.`;
         title: "Decisão sob Análise (Modo de Simulação Local)",
         desc: "Análise processada através da engine local por ausência de chave de API configurada.",
         tag: "Contestação",
-        context: `Análise simulada local do Conselho sobre a entrada: "${req.body.decisionText}". O Conselho de Contestação reuniu-se extraordinariamente para avaliar o caso.`,
+        context: `Análise simulada local do Conselho sobre a entrada: "${decisionText}". O Conselho de Contestação reuniu-se extraordinariamente para avaliar o caso.`,
         dados: [
           { campo: "Informação do Cidadão", fonte: "Entrada do Usuário", status: "warn", statusLabel: "Análise Assistida" },
           { campo: "Bases Federais (CNIS / eSocial)", fonte: "Cruzamento Frio", status: "bad", statusLabel: "Inconsistência Registrada" },
@@ -217,13 +219,16 @@ Siga estritamente o esquema JSON requerido para a resposta do Conselho.`;
           recomendacao: "1. Fornecer de forma indubitável a anulação do encerramento por vício insanável de publicidade;\n2. Cadastrar imediatamente um agendamento humano para reavaliar a consistência dos dados declarados;\n3. Publicar em canais de fácil compreensão e em rádio/SMS a justificação inteligível do status do usuário.",
           alerta: "Chave de API Gemini não detectada ou inativa no ambiente. Para análises personalizadas em tempo real via IA generativa integrada, configure sua 'GEMINI_API_KEY' no menu do painel lateral de segredos.",
           minutaRecurso: "RECURSO ADMINISTRATIVO DE REVISÃO (MOCK SIMULADO)\n\nAO: Órgão Gestor da Administração Pública Brasileira\n\nAssunto: Pedido de Revisão de Decisão unicamente automatizada\n\nI. DA VIOLAÇÃO AO CONTRADITÓRIO PRÉVIO\nConforme a dogmática jurídica de Tavares e Cristóvam, a decisão administrativa proferida unicamente por máquina que cassa ou restringe direitos fundamentais sem ensejo de contraditório prévio é nula de pleno direito.\n\nII. PEDIDO\nRequer-se a concessão do efeito suspensivo e a imediata revisão por agente humano, promovendo-se o contraditório real e restabelecimento cautelar.",
-          pedidoLAI: "REQUERIMENTO DE EXPLICABILIDADE DE CRITÉRIOS (LAI SIMULADO)\n\nAO: Serviço de Informação ao Cidadão do Órgão Gestor\n\nCom suporte nos arts. 20 da LGPD e regulamento da Lei de Acesso à Informação, reclama-se o envio de:\n\n1. Especificação funcional descritiva do algoritmo de decisão encarregado de classificar recursos e cortar perfis.\n2. Margem estatística oficial de tolerância de erros e auditoria de vieses raciais realizada nas bases de controle."
+          pedidoLAI: "REQUERIMENTO DE EXPLICABILIDADE DE CRITÉRIOS (LAI SIMULADO)\n\nAO: Serviço de Informação ao Cidadão do Órgão Gestor\n\nCom suporte nos arts. 20 da LGPD e regulamento da Lei de Acesso à Informação, reclama-se o envio de:\n\n1. Especificação funcional descritiva do algoritmo de decisão encarregado de classificar recursos e cortar perfis.\n2. Margem estatística oficial de tolerância de erros e auditoria de biases raciais realizada nas bases de controle."
         }
       };
 
       res.json(simulatedResponse);
     }
-  });
+  };
+
+  app.post("/api/analyze-decision", handleAnalyzeDecision);
+  app.post("/api/analyze-case", handleAnalyzeDecision);
 
   // Serve static assets in production, otherwise mount Vite in development
   if (process.env.NODE_ENV !== "production") {

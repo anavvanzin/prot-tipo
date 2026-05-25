@@ -11,39 +11,33 @@ export default function Header({ apiKeyConfigured }: HeaderProps) {
       {/* Decorative Federal Banner */}
       <div className="h-1 w-full bg-gradient-to-r from-green-600 via-yellow-400 to-blue-600" />
       
-      <div className="max-w-7xl mx-auto px-4 py-4.5 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div className="flex items-center space-x-3.5">
+      <div className="max-w-7xl mx-auto px-4 py-4.5 sm:px-6 lg:px-8 flex flex-col items-center text-center md:flex-row md:items-center md:justify-between md:text-left gap-4">
+        <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3.5">
           <img 
-            src="/src/assets/images/cca_logo_1779691762491.png" 
+            src="/src/assets/images/cca_simple_flat_logo_1779692326781.png" 
             alt="Logo do Conselho de Contestação Algorítmica" 
-            className="h-11 w-11 rounded-xl object-cover border border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-transform hover:scale-105 duration-200"
+            className="h-10 w-10 sm:h-11 sm:w-11 rounded-xl object-cover border border-slate-700/60 shadow-md transition-transform hover:scale-105 duration-200"
             referrerPolicy="no-referrer"
           />
-          <div>
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col items-center sm:items-start">
+            <div className="flex flex-col sm:flex-row items-center gap-2">
               <h1 className="text-xl md:text-2xl font-black tracking-wide lg:tracking-widest text-white leading-relaxed lg:leading-[1.8] font-display">
                 Conselho de Contestação Algorítmica
               </h1>
-              <span className="hidden sm:inline-block px-2.5 py-0.5 text-[9px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full uppercase tracking-wider font-mono">
+              <span className="px-2.5 py-0.5 text-[9px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full uppercase tracking-wider font-mono">
                 Contestabilidade Cidadã
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+            <p className="text-[11px] text-slate-400 font-mono mt-1">
               Auditoria de Decisões Estatais Automatizadas · Direitos Fundamentais (Art. 5º, LV & LGPD Art. 20)
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 self-start md:self-auto font-mono text-xs">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-800/80 rounded-lg border border-slate-700/50">
-            <span className={`h-2 w-2 rounded-full ${apiKeyConfigured ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-amber-500 shadow-[0_0_8px_#f59e0b]'}`} />
-            <span className="text-slate-300">
-              {apiKeyConfigured ? "Gemini Ativo" : "Simulação Local"}
-            </span>
-          </div>
+        <div className="flex items-center gap-2 self-center md:self-auto font-mono text-xs">
           <a 
             href="#doc-framework" 
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800/40 hover:bg-slate-800 text-slate-400 hover:text-slate-200 rounded-lg border border-slate-800 transition duration-150"
+            className="flex items-center gap-1.5 px-4 py-2 bg-slate-850 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl border border-slate-750/80 shadow-md transition duration-150 active:scale-95 whitespace-nowrap"
           >
             <Scale size={14} className="text-amber-500" />
             <span>Fundamentos Jurídicos</span>

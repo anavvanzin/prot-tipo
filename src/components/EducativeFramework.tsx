@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BookOpen, User, Eye, Sparkles, MessageCircleCode } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ExplainableTerm from "./ExplainableTerm";
-import LegalGlossary from "./LegalGlossary";
 
 export default function EducativeFramework() {
   const [comunicacaoModo, setComunicacaoModo] = useState<"gelido" | "humano">("gelido");
@@ -122,9 +121,6 @@ export default function EducativeFramework() {
           </div>
         </div>
       </section>
-
-      {/* Complete Citizen Dictionary Panel right beneath the educational columns */}
-      <LegalGlossary />
     </div>
   );
 }

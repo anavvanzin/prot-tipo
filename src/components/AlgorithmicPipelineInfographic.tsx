@@ -128,7 +128,7 @@ export default function AlgorithmicPipelineInfographic({ activeCase }: Algorithm
   const steps: PipelineStep[] = [
     {
       id: 1,
-      title: "Ingetação de Dados",
+      title: "Ingestão de Dados",
       subtitle: "Fontes Indiretas",
       icon: <Database size={16} />,
       colorClass: "text-blue-400",
@@ -391,7 +391,7 @@ export default function AlgorithmicPipelineInfographic({ activeCase }: Algorithm
             >
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono rounded">
-                  Ingetação Unilateral de Dados
+                  Ingestão Unilateral de Dados
                 </span>
                 <span className="text-slate-500 text-[10px] font-mono">• Coleta Burocrática</span>
               </div>

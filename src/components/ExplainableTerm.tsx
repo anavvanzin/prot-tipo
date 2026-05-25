@@ -48,6 +48,14 @@ const TERM_DEFINITIONS: { [key: string]: { simple: string; title: string } } = {
   "lgpd": {
     title: "Lei Geral de Proteção de Dados (Art. 20)",
     simple: "Garante que você pode exigir que uma pessoa real e qualificada revise uma decisão desfavorável tomada unicamente por robôs."
+  },
+  "fundamentação": {
+    title: "Fundamentação Jurídica",
+    simple: "A demonstração lógica, conceitual e substancial das leis, princípios constitucionais e teses doutrinárias aplicados à decisão de um caso, legitimando de forma clara o acórdão."
+  },
+  "dogmática": {
+    title: "Dogmática Jurídica",
+    simple: "O estudo científico estruturado do Direito que analisa as normas e regras constitucionais para impor limites ao poder absoluto do Estado e, hoje, garantir que robôs públicos não cometam abusos automatizados."
   }
 };
 

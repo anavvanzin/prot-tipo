@@ -13,12 +13,15 @@ export default function Header({ apiKeyConfigured }: HeaderProps) {
       
       <div className="max-w-7xl mx-auto px-4 py-4.5 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center space-x-3.5">
-          <div className="h-11 w-11 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 rounded-xl flex items-center justify-center text-slate-950 font-black text-lg shadow-[0_0_15px_rgba(245,158,11,0.2)] border border-yellow-300/30 font-display">
-            CCA
-          </div>
+          <img 
+            src="/src/assets/images/cca_logo_1779691762491.png" 
+            alt="Logo do Conselho de Contestação Algorítmica" 
+            className="h-11 w-11 rounded-xl object-cover border border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-transform hover:scale-105 duration-200"
+            referrerPolicy="no-referrer"
+          />
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-bold tracking-tight text-white leading-tight font-display">
+              <h1 className="text-xl md:text-2xl font-black tracking-wide lg:tracking-widest text-white leading-relaxed lg:leading-[1.8] font-display">
                 Conselho de Contestação Algorítmica
               </h1>
               <span className="hidden sm:inline-block px-2.5 py-0.5 text-[9px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full uppercase tracking-wider font-mono">
